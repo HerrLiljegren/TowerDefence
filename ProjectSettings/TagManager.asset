@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -38,6 +39,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 277261489
+    locked: 0
+  - name: TowerLocations
+    uniqueID: 2524437665
+    locked: 0
+  - name: Nature
+    uniqueID: 370253583
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
