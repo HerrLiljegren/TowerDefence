@@ -80,6 +80,8 @@ public class Turret : MonoBehaviour
     private void RotateToTarget()
     {
         Transform targetToRotateTowards = target ?? initialRotation;
+        if (targetToRotateTowards == null) return;
+
         var direction = targetToRotateTowards.position - partToRotate.position;
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         var q = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -88,6 +90,11 @@ public class Turret : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        if (bullet != null)
+        {
+            bullet.Seek(target);
+        }
     }
 }
