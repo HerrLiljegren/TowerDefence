@@ -2,15 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildManager : MonoBehaviour {
+public class BuildManager  : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    #region Singelton
+    public static BuildManager Instance;
+    private void Awake()
+    {
+        if(Instance != null)
+        {
+            Debug.Log("More than one BuildManager in scene!");
+            return;
+        }
+        Instance = this;
+    }
+    #endregion
+
+    public GameObject standardTurretPrefab;
+
+    private GameObject turretToBuild;
+
+    private void Start()
+    {
+        turretToBuild = standardTurretPrefab;
+    }
+
+    public GameObject GetTurretToBuild()
+    {
+        return turretToBuild;
+    }
 }

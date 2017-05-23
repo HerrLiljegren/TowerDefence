@@ -6,6 +6,7 @@ public class BuildNode : MonoBehaviour {
 
     private SpriteRenderer sprite;
     private GameObject turret;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,8 @@ public class BuildNode : MonoBehaviour {
             return;
         }
 
+        var turretToBuild = BuildManager.Instance.GetTurretToBuild();
+        turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
 
     }
 
